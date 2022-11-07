@@ -3,14 +3,37 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root {
+    --card-header-border-color: #746615;
+    --card-color-primary: #F7DD43;
+    --card-bg-color: #1D1C19;
+    --bg: url("./assets/background/yellow.svg");
+}
+
+body.blue {
+    --card-header-border-color: #338AF3;
+    --card-color-primary: #338AF3;
+    --card-bg-color: #202024;
+    --bg: url("./assets/background/blue.svg");
+
+
+}
+
+body.green {
+    --card-header-border-color: #047C3F;
+    --card-color-primary: #047C3F;
+    --card-bg-color: #1A1F1B;
+    --bg: url("./assets/background/green.svg");
+
+
+}
+
 ul {
     list-style: none;
 }
 body {
-    background-color: #121214;
-    background-image: url("./assets/background/blue.svg");
-    background-position-x: center;
-    background-position-y: 55%;
+    background: #121214 var(--bg) no-repeat center/cover;
 }
 
 body * {
@@ -19,7 +42,8 @@ body * {
 
 #app {
     width: fit-content;
-    margin: 52px auto;
+    margin: auto;
+    padding-top: 52px;
 }
 
 header {
@@ -51,9 +75,12 @@ header h1 {
     padding: 32px 23px;
     text-align: center;
 
-    background: #1D1C19;
-    border-bottom: 2px solid #F7DD43;
+    background: var(--card-bg-color);
+    border-bottom: 2px solid var(--card-color-primary);
     border-radius: 6px;
+
+    animation: appear .5s forwards;
+    opacity: 0;
 }
 
 .card h2 {
@@ -63,7 +90,7 @@ header h1 {
     align-items: center;
     padding: 8px 16px;
 
-    border: 1px solid #746615;
+    border: 1px solid var(--card-header-border-color);
     border-radius: 6px;
 
     width: fit-content;
@@ -105,3 +132,28 @@ header h1 {
     text-align: center;
     color: #E1E1E6;
 }
+
+.card h2:hover,
+.card ul li img:hover,
+.card ul li strong:hover {
+    transform: scale(1.1);
+}
+
+.card h2,
+.card ul li img,
+.card ul li strong {
+    transition: transform .3s;
+}
+
+@keyframes appear {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+ 
